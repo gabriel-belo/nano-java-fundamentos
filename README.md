@@ -29,3 +29,31 @@ Exemplo:
 
 Não perdemos infprmações de byte -> short, short -> int, char -> int, int -> long, int -> double
 Podemos perder de long-> float e  int -> float
+
+<p>Operadores de atribuição</p>
+exemplo:
+int x= 10;
+x= x + 15;  ou x+= 15;
+
+<table>
+  <tr>
+    <th>Expressão</th>
+    <th>Significado</th>
+  </tr>
+  <tr>
+    <td>x+= y</td>
+    <td>x= x + y</td>
+  </tr>
+  <tr>
+    <td>x-= y</td>
+    <td>x= x - y</td>
+  </tr>
+  <tr>
+    <td>x*= y</td>
+    <td>x= x * y</td>
+  </tr>
+  <tr>
+    <td>x/= y</td>
+    <td>x= x / y</td>
+  </tr>
+</table>
