@@ -55,3 +55,77 @@ Podemos perder de long-> float e  int -> float
     <td>x= x / y</td>
   </tr>
 </table>
+
+
+<p>Operadores incremento(a++) e decremento(a--)</p>
+
+<p>operadores de igualdade</p>
+<table>
+  <tr>
+    <th>Operador de igualdade</th>
+    <th>Exemplo</th>
+    <th>Significado</th>
+  </tr>
+
+  <tr>
+    <td>==</td>
+    <td>x==y</td>
+    <td>x é igual a y</td>
+  </tr>
+
+  <tr>
+    <td>!=</td>
+    <td>x != y</td>
+    <td> x é diferente de y</td>
+  </tr>
+  
+</table>
+
+
+<p>Operadores relacionais</p>
+<table>
+  <tr>
+    <th>Operador relacional</th>
+    <th>Exemplo</th>
+    <th>Significado</th>
+  </tr>
+
+  <tr>
+    <td>></td>
+    <td>x > y</td>
+    <td>x é maior que y</td>
+  </tr>
+
+  <tr>
+    <td><</td>
+    <td>x < y</td>
+    <td>x é menor que y</td>
+  </tr>
+
+  <tr>
+    <td>>=</td>
+    <td>x >= y</td>
+    <td>x maior ou igual a y</td>
+  </tr>
+  
+  <tr>
+    <td><=</td>
+    <td>x <= y</td>
+    <td>x é menor ou igual a y</td>
+  </tr>
+</table>
+
+<p>Operadores lógicos</p>
+<ul>
+  <li>e (and)= &&</li>
+  <li>ou (OR)= ||</li>
+  <li>XOR= ^ (A combinação resulta em em um valor verdadeiro(true) somente se as duas expressões tiverem os valores opostos)</li>
+  <li>NOT = !</li>
+</ul>
+
+<p>Entrada e saída de dados</p>
+Para a saída de dados precisamos da classe Scaner
+Exemplo:
+Scanner sc= new Scanner(System.in);
+
+O valor System.in especifica que queremos ler os valores digirados pelo usuário.
