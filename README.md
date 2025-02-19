@@ -31,9 +31,7 @@ Não perdemos infprmações de byte -> short, short -> int, char -> int, int -> 
 Podemos perder de long-> float e  int -> float
 
 <p>Operadores de atribuição</p>
-exemplo:
-int x= 10;
-x= x + 15;  ou x+= 15;
+
 
 <table>
   <tr>
