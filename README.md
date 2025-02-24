@@ -123,9 +123,24 @@ Podemos perder de long-> float e  int -> float
   <li>NOT = !</li>
 </ul>
 
+
 <p>Entrada e saída de dados</p>
 Para a saída de dados precisamos da classe Scaner
 Exemplo:
 Scanner sc= new Scanner(System.in);
 
 O valor System.in especifica que queremos ler os valores digirados pelo usuário.
+
+<h1>Cap 2- Classe, métodos e atributos</h1>
+Uma classe possui o modelo ou estrutura a partir do qual os objetos serão criados.
+
+Por exemplo para uma conta bancária informações relevantes poderiam ser saldo, número da conta, agência, tipo de conta entre outros. E ações importantes serião sacar, depositar, verificar o saldo entre outros.
+
+Um objeto é uma instância de uma classe.
+
+<h3>Atributos</h3>
+Em uma classe, os atributos são definidos por variáveis, que podem ser do tipo primitivo ou do tipo de referência, no qual a variável armazena uma referência a um objeto.
+
+Os atributos seguem o lowerCamelCase, onde a primeira letra sempre é minúscula e se houver mais de uma palavra a primeira letra da segunda palavra será maiúscula
+
+As variáveis que definem um atributo em uma classe
