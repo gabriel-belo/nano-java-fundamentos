@@ -266,3 +266,66 @@ public class Main {
         carro2.exibirInfo(); // Saída: Modelo: Genérico, Ano: 2000
     }
 }
+
+
+No momento em que criamos uma instância da classe, três passos são executados pelo Java:
+<ul>
+  <li>Alocar memória para o objeto.</li>
+  <li>Inicializar os atributos com os valores iniciais ou padrões.</li>
+  <li>Chamar o método Construtor da classe.</li>
+</ul>
+
+Diferença dos construtores para os métodos comuns:
+<ul>
+  <li>Têm o mesmo nome da classe</li>
+  <li>Não têm tipo de retorno(Nem mesmo void)</li>
+</ul>
+
+Toda classe tem pelo menos um construtor. Quando o construtor não é especificado, a linguagem Java fornece um construtor default(padrão).
+
+Para diferenciar o atributo do parâmetro, utiliza-se a instrução this.
+
+Uma classe pode ter vários construtores com diferentes tipos e quantidades de argumentos. Isso é chamada de srobrecargade métodos construtores. Dessa forma, uma classe pode ser instanciada como qualquer construtor.
+Em uma classe com vários construtores podemos instânciar a classe de diversas formas, por exemplo em uma classe com um construtor vazio, outro que define saldo e outro que define saldo e agência, podemos instânciar dessas três formas:
+<ul>
+  <li>new Conta();</li>
+  <li>new Conta(100);</li>
+  <li>new Conta(10, 100);</li>
+</ul>
+
+Uma variável que armazena a referência de um objeto pode ter o valor null. Esse valor quer dizer que a variável está vazia e não faz referênciaa nenhum objeto. Devemos tomar cuidado, pois no caso de tentar acessar um atributo ou método em uma variável vazia, irá ocorrer um erro na execução do programa.
+
+<h3>Modificadores de acesso</h3>
+Os modifcadores são palavras chave que alteram as definições de uma classe, método, atributo ou construtor. Existem vários modificadores na linguagem na qual fazem parte: static, abstract e final.
+
+O Java desponibiliza três modificadores de acesso: public, protected e private. Quando nenhum modificador é utilizado o nível de acesso padrão (default) é utilizado.
+
+Os modificadores irão determinar quais variáveis, métodos e construtores serão visíveis a outras classes.
+<table>
+  <tr>
+    <th>Palavra reservada</th>
+    <th>Descrição</th>
+  </tr>
+  
+  <tr>
+    <td>Private</td>
+    <td>Atributos, métodos e construtores- acesíveis somente dentro da própria classe.
+
+          Atributos, métodos e construtores- acessíveis somente em classes do mesmo pacote.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>Protected</td>
+    <td>Atributos, métodos e construtores- acessíveis na própria classe, suas subclasses e também nos métodos das classes que pertencem ao pacote.</td>
+  </tr>
+  
+  <tr>
+    <tdPublic></td>
+    <td>Atributos e métodos- acessíveis em todos os métodos de todas as classes</td>
+  </tr>
+</table>
+
+
+<h3>Java API Specification</h3>
+As classes utilizadas para manipular arquivos estão dentro do pacote java.io
