@@ -329,3 +329,22 @@ Os modificadores irão determinar quais variáveis, métodos e construtores ser�
 
 <h3>Java API Specification</h3>
 As classes utilizadas para manipular arquivos estão dentro do pacote java.io
+
+<h3>Cometários</h3>
+Para comentar em uma linha usamos '//'
+
+Para comentar em mais de uma linha usamos '/* */'
+
+Para comentários de documentação, ou seja, o comentário será legível tanto para computadorews quanto para os desenvolvedores. Esse tipo de documentário é interpretado como sendo documnetação oficial que descreve o funcionamento de uma classe e seus métodos. Forma de uso '/** */'
+
+<h3>JAVADOC</h3>
+Pata criar a documentação das classes usamos o javadoc., que permite que as classes criadas sejam documentadas no formato HTML.
+Estrutura:
+/** Descrição
+@tag descrição da tag
+*/
+
+Os comentários de documentação devem ser inseridos imediatamente acima do elemento que está sendomdocumentado
+
+
+
