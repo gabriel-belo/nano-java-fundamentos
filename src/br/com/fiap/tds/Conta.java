@@ -23,44 +23,61 @@ public class Conta   {
      */
     private int numero= 1;
 
+    private boolean especial;
+
+
     public Conta(){
 
     }
 
     public Conta(double saldo, int agencia, int numero){
-        this.saldo= saldo;
-        this.agencia= agencia;
-        this.numero= numero;
+        this.setSaldo(saldo);
+        this.setAgencia(agencia);
+        this.setNumero(numero);
         System.out.println("Criando uma instância da conta");
     }
 
     //Métodos
 
     /**
-     * Retira um valor do saldo da conta
-     * @param valor Valor a ser retirado
-     */
-    public void retirar(double valor){
-        this.saldo -= valor;
-    }
-
-    /**
-     * Deposita um valor ao saldo da conta
-     * @param valor Valor a ser depositado
+     *Deposita um valor ao saldo da conta
+     * @param valor valor a ser depositiado
      */
     public void depositar(double valor){
         saldo+= valor;
     }
 
     /**
-     * Verifica o saldo da conta
-     * @return Valor do saldo da conta
+     * Retira um valor do saldo da conta
+     * @param valor Valor a ser retirado
      */
-    public double verificarSaldo(){
+    public void retirar(double valor){
+        saldo -= valor;
+    }
+
+    public int getNumero(){
+        return numero;
+    }
+
+    public void setNumero(int numero){
+        this.numero= numero;
+    }
+
+    public int getAgencia(){
+        return agencia;
+    }
+
+    public void setAgencia(int agencia){
+        this.agencia= agencia;
+    }
+
+    public double getSaldo(){
         return saldo;
     }
 
-    
+    public void setSaldo(double saldo){
+        this.saldo= saldo;
+    }
 
 }
 
