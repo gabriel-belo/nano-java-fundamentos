@@ -338,13 +338,90 @@ Para comentar em mais de uma linha usamos '/* */'
 Para comentários de documentação, ou seja, o comentário será legível tanto para computadorews quanto para os desenvolvedores. Esse tipo de documentário é interpretado como sendo documnetação oficial que descreve o funcionamento de uma classe e seus métodos. Forma de uso '/** */'
 
 <h3>JAVADOC</h3>
-Pata criar a documentação das classes usamos o javadoc., que permite que as classes criadas sejam documentadas no formato HTML.
+Pata criar a documentação das classes usamos o javadoc., que permite que as classes criadas sejam documentadas no formato HTML. O javadoc é uma ferramenta.
 Estrutura:
 /** Descrição
 @tag descrição da tag
 */
 
-Os comentários de documentação devem ser inseridos imediatamente acima do elemento que está sendomdocumentado
+Os comentários de documentação devem ser inseridos imediatamente acima do elemento que está sendo documentado
+
+Temos várias tags, exemplos:
+<ul>
+  <li>@author: Nome do desenvolvedor</li>
+  <li>@deprecated: Marca o método como deprecated. Algumas IDES exibirão um alerta de compilação se o método for chamado.</li>
+  <li>@exception: Documenta uma exceção lançada por um método- veja também @throws</li>
+  <li>@param: Define um parâmetro do método. Requerido para cada parâmetro.</li>
+  <li>@return: Documenta o valor de retorno. Essa tag não deve ser usada para construtores ou métodos definidos com o tipo de retorno void.</li>
+  <li>@see: Documenta uma associação a outro método ou classe.</li>
+  <li>@Since: Documenta uma exceção lançada por um método. E um sinônimo para a @exception introduzida no Javadoc 1.2.</li>
+  <li>@version: Exibe o número da versão de uma classe ou um método.</li>
+</ul>
+
+<h3>Javabean e encapsulamento</h3>
+A especificação JavaBeans define diretrizes que ditam os nomes de suas variáveis, os nomes e tipos de retorno de seus métodos e alguns outros aspectos para que o objeto, chamado de beans, sejam reutilizáveis.
+
+Um Java Bean é uma classe Java simples que segue algumas convenções específicas para representar objetos reutilizáveis, principalmente em frameworks e aplicações Java. Ele é usado, geralmente, para encapsular dados de uma forma padronizada. Pensa nele como uma "estrutura de dados" com regras para garantir que seja fácil de manipular e transportar dentro de aplicações Java, incluindo frameworks como Spring, Java EE e outros.
+A idéia é criar pequenos componentes que possam ser reaproveitados ao máximo, simplificando o processo de deenvolvimento.
+
+Para que serve um Java Bean?
+<ul>
+  <li>Transferir dados entre camadas de uma aplicação (DTOs).</li>
+  <li>Facilitar a integração com frameworks que esperam objetos padronizados (por exemplo, em frameworks como Spring, Hibernate).</li>
+  <li>Reutilização de código, já que eles funcionam como "blocos" de construção que você pode reaproveitar.</li>
+  <li>Persistência e serialização de dados.</li>
+</ul>
 
 
+Regras para que a classe seja um Java Bean são:
+<ul>
+  <li>Precisa ter um construtor padrão, sem argumentos.</li>
+  <li>Encapsular os seus atributos, provendo métodos para o acesso a eles em outras classes.</li>
+  <li>É uma bá prática a implementação da interface java.io.Seriazable</li>
+</ul>
+
+*Encapsular atributos é: proteger os dados de um objeto, controlando como eles são acessados e modificados. É como se você colocasse suas informações dentro de uma caixa e só deixasse as pessoas usarem essas informações do jeito que você permitir.
+
+Uma classe bean pode conter construtores com argumentos, porém ela dev ter também um construtor sem argumentos.
+
+É uma boa prática a implementação da interface Serializable, que permite a serialização de objetos.
+
+*Serialização de objetos é basicamente o processo de transformar um objeto em uma sequência de bytes, para que ele possa ser salvo em disco, enviado pela rede ou armazenado de uma forma que possa ser reconstruído depois.
+É tipo tirar um "raio-x" do objeto, converter ele em um formato que pode ser transportado ou guardado, e depois você pode "reconstruir" o mesmo objeto de volta quando quiser.
+
+
+Para encapsular um método, devemos utilizar o acesso mais restritivo quando desejamos que as outras classes não tenham acesso a o método. Permitindo assim o uso somente de dentro da própria classe.
+
+Sempre marcamos os atributos de uma classe com o nível mais restritivo(private), a não ser que exista um bom motivo para deixá-la com outro nível de acesso. Permitir o aceso total a uma atributo não é uma boa prática, pois qualquer mudança na estrutura interna da classe acarretaria em mudanças nas outras classes que a utilizam, limitando a flexibilidade de mudança do código.
+
+Outros benefícios do encapsulamento são:
+<ul>
+  <li>Esconder a implementação de uma classe: Para utilizar uma classe que envia e-mail, precisamos saber somente os valores que a classe precisa receber para realizar o envio, não precisamos saber como ela o faz.</li>
+  <li>Definir o modo de acesso aos dados: escrita, leitura, escrita e leitura.</li>
+  <li>Proteger os dados que estão dentro dos objetos: evitando-se que eles estejam alterados erroneamente.</li>
+</ul>
+
+O uso de métodos de leitura (get) e escrita (set) visam desacoplar os atributos de uma classe dos clientes que a utilizam
+
+A convenção de nome para métodos que alteram o valor do atributo é adicionar a palavra set antes do nome do atributo. Para os métodos que recuperam a informação, utiliza-se a palavra get seguida do nome do atributo. Para atributos do tipo boolean, também é possível utilizar a palavra is antes do atributo.
+
+Função super(): é destinada a chamar o construtor de uma classe pai, sendo essencial quando estamos utilizando herança para definir classes. Ela também pode ser usada antes de colocarmos o this rm uma função evitando erro de referência. Devido a sua importância, ela termina sendo chamada sempre que construímos uma classe mesmo que não esteja explicita.
+
+<h4>O que é um construtor de uma classe?</h4>
+Um construtor é um método especial de uma classe que é chamado automaticamente quando você cria um novo objeto. Ele serve para inicializar o objeto, ou seja, definir valores iniciais para os atributos ou executar algum código de configuração quando o objeto nasce.
+
+Pensa assim:
+
+Quando você cria um objeto com new, tipo:
+Pessoa p = new Pessoa();
+
+O que está acontecendo nos bastidores é: o construtor da classe Pessoa está sendo chamado.
+
+Características do Construtor:
+<ul>
+  <li>Tem o mesmo nome da classe</li>
+  <li>Não tem tipo de retorno (nem void)</li>
+  <li>Pode receber parâmetros (ou não)</li>
+  <li>Você pode ter vários construtores na mesma classe (sobrecarga)</li>
+</ul>
 
