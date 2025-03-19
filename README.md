@@ -425,3 +425,25 @@ Características do Construtor:
   <li>Você pode ter vários construtores na mesma classe (sobrecarga)</li>
 </ul>
 
+<h1>Cap 3- Herança</h1>
+Uma classe que herda de outra classe é chamada de subclasse, já a classe herdada é chamada de superclasse.
+
+A herança é utilizada como forma de reutilizar os atributos e métodos de classes já definidas, permitindo assim derivar uma nova nova classe mais espcializada a partir de outra classe mais genérica existente.
+
+Uma classe só pode ter uma superclasse, ou seja, não é possível ter herança múltipla. Porém, uma classe pode ter um número ilimitado de subclasses.
+
+Dessa forma, uma subclasse recebe todas as características da superclasse e de todas as outras classes acima dela. A hierarquia de classes se inicia com a classe Object, isto é, todas as classes a herdam direta ou indiretamente.
+
+A palavra-chave extends é utilizada na declaração de uma classe para determinar a sua superclasse. Caso a classe não tenha essa palavra-chave em sua declaração,a herança que existe é diretamente da classe Object.
+
+A classe Object em Java é a superclasse de todas as classes. Ou seja, todas as classes em Java herdam, direta ou indiretamente, dessa classe. Ela está no pacote java.lang, que é automaticamente importado. Basicamente, a Object fornece métodos fundamentais que qualquer objeto em Java possui.
+
+Sintaxe: [public] class <subclasse> extends <superclasse>
+
+Para calcular o saldo da conta nós precisamos dos valor do cheque especial e do saldo porém o saldo esta como privado na classe pai (conta) então nós chamamos o método getSaldo que retorna o valor do saldo, como vemos no exemplo: 
+public double getSaldoDisponível(){
+      return getSaldo() + this.chequeEspecial;
+}
+
+Uma forma de descobrir se a herança é adequada para as suas classes é seguir a regra do 'é um', que afirma que cada objeto da subclasse é um objeto da superclasse. Por exemplo, uma Conta Corrente é uma Conta, o que significa que a herança deve ser utilizada nesta situação.
+
