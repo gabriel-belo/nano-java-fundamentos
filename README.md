@@ -1,5 +1,39 @@
 # nano-java-fundamentos
 
+<h1>Classe, objeto e instância</h1>
+O que é uma CLASSE?
+
+Pensa numa classe como um molde, um projeto, uma forma.
+➡️ Ela descreve como um objeto deve ser.
+➡️ É só a ideia, o plano.
+
+🏭 Analogia real:
+
+A classe é como a planta de uma casa feita pelo arquiteto.
+Ela define: quantos quartos vai ter, a cor das paredes, onde ficam as portas…
+➡️ Mas só a planta não é a casa real!
+➡️ Ainda não dá pra morar nela.
+
+
+O que é um OBJETO?
+
+O objeto é a coisa real.
+➡️ Ele é criado a partir da classe.
+➡️ É a "casa construída", o "carro de verdade" com cor, modelo, etc.
+
+🏭 Na analogia:
+
+A planta é a classe.
+Quando você constrói a casa, ela vira um objeto real.
+Cada casa pode ter variações: uma azul, outra vermelha…
+➡️ Elas são diferentes, mas seguem o mesmo plano (classe).
+
+
+O que é INSTANCIAR?
+
+"Instanciar" é o ato de criar um objeto a partir da classe.
+➡️ Você está criando uma "instância" daquela classe.
+<h1>Cap 1-Orientação a objetos</h1>
 <p>A hierarquia de diretórios para a organização dos arquivos de um programa em Java é denominada Pacotes </p>
 <p>Para garantir um nome de pacote único, é recomendado utilizar o nome de domínio da empresa escrito ao contrário. </p>
 Exemplo:
