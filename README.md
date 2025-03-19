@@ -447,3 +447,322 @@ public double getSaldoDisponível(){
 
 Uma forma de descobrir se a herança é adequada para as suas classes é seguir a regra do 'é um', que afirma que cada objeto da subclasse é um objeto da superclasse. Por exemplo, uma Conta Corrente é uma Conta, o que significa que a herança deve ser utilizada nesta situação.
 
+As variáveis que armazenam uma referência a um objeto são polimórficas. Isso quer dizer que uma variável de uma superclasse pode receber qualquer objeto de suas subclasses.
+
+O que significa "variáveis são polimórficas"? Polimorfismo é um dos pilares da orientação a objetos. A ideia é que uma variável de um tipo mais genérico (superclasse) pode apontar para objetos de tipos mais específicos (subclasses).
+Essa flexibilidade é o que chamamos de polimorfismo. É como se tivesse uma caixa que pode conter tanto um cachorro quanto um gato, e você pode interagir com eles de maneira genérica, respeitando suas particularidades
+
+quando você cria um objeto, como:
+ContaCorrente cc = new ContaCorrente();
+A variável cc não contém o objeto em si, mas sim uma referência para aquele objeto na memória.
+
+"Declarar a variável do tipo Animal", significa definir o tipo da referência, ou seja, o "rótulo" que você dá para a variável no momento em que ela é criada.
+
+Em Java, uma variável que guarda objetos funciona assim:
+
+TipoDaVariavel nomeDaVariavel = new TipoDoObjeto();
+
+O TipoDaVariavel pode ser:
+
+O tipo exato da classe (Cachorro, Gato...)
+Ou um tipo mais genérico, que é a superclasse (Animal)
+
+🔵 Vamos ver isso na prática:
+
+Exemplo simples:
+
+Animal meuAnimal = new Cachorro();
+
+Aqui, a variável meuAnimal é do tipo Animal.
+Mas o objeto real que ela aponta é um Cachorro.
+
+➡️ Isso significa que:
+O compilador enxerga meuAnimal como um Animal.
+Você pode chamar qualquer método que existe em Animal.
+Mas se o método foi sobrescrito no Cachorro, ele executa a versão do Cachorro.
+
+ Então, quando você declara a variável como Animal, está dizendo:
+
+"Eu só me importo com o que Animal sabe fazer (ou seja, os métodos de Animal)".
+"Mas por baixo dos panos, pode ser um Cachorro, um Gato ou qualquer outro Animal".
+
+Podemos atribuir o objeto que está referenciado na variável cc a uma variável do tipo ContaCorrente, para isso é necessário realizar um cast: ContaCorrente c1= (ContaCorrente) cc;
+
+O que é o cast?
+"Cast" significa "conversão" ou "transformação" de tipos.
+No caso de objetos, você está dizendo para o Java:
+➡️ "Ei, Java! Eu sei que essa variável que você acha que é um Animal, na verdade é um Cachorro. Pode tratar ela como Cachorro!"
+E isso permite acessar métodos e atributos específicos dessa subclasse.
+Por que precisa de cast?
+Quando você declara uma variável como Animal, o compilador só enxerga os métodos e atributos que a classe Animal tem.
+Precisa dizer explicitamente ao compilador que você quer tratar como Cachorro.
+
+Como escrever um cast?
+A sintaxe é simples: TipoQueVocêQuer nomeDaVariavelNova = (TipoQueVocêQuer) variavelAntiga;
+
+Se tentarmos realizar o cast e o objeto não for do tipo ou subtipo da classe que queremos forçar, o Java irá lançar a exceção ClassCastException
+
+Conta conta = new Conta();  
+ContaCorrente c2 = (ContaCorrente) conta;  // Aqui dá problema!
+
+➡️ O que acontece:
+Você criou um objeto do tipo Conta.
+Depois, tentou dizer ao Java:
+"Esse Conta aqui... trata ele como um ContaCorrente."
+
+⚠️ Mas não é verdade!
+Ele é um Conta puro, e não um ContaCorrente.
+O Java aceita o cast na compilação, porque ele vê que ContaCorrente é uma subclasse de Conta — então pode ser possível.
+Mas na hora de rodar, o Java percebe que o objeto que você criou não é um ContaCorrente, então ele lança uma exceção:
+
+➡️ ClassCastException
+
+java.lang.ClassCastException: Conta cannot be cast to ContaCorrente
+
+🔷 Por que isso acontece?
+Porque o Java só pode fazer um cast seguro quando o objeto real (aquele que foi instanciado com new) é da subclasse.
+
+Mas nesse caso, o que você tem é:
+
+Conta conta = new Conta();  // Um Conta puro e simples.
+
+E depois tenta forçar ele a ser ContaCorrente. Mas um objeto Conta não tem as características internas de um ContaCorrente.
+Ele não sabe como ser um ContaCorrente, e isso dá problema!
+
+🔷 Como isso seria seguro?
+Se você fizesse algo assim:
+
+Conta conta = new ContaCorrente();  // Variável do tipo Conta, mas objeto é ContaCorrente.
+ContaCorrente c2 = (ContaCorrente) conta;  // Agora sim! O objeto É um ContaCorrente.
+
+Aqui funciona!
+O cast é seguro porque o objeto realmente é um ContaCorrente.
+O compilador não sabe disso na hora da declaração, mas em tempo de execução o Java valida e permite.
+
+🔷 Uma analogia:
+Pensa que Conta é um "carro genérico" e ContaCorrente é um "carro esportivo".
+Se você tem um carro normal (Conta), ele não tem os acessórios de um carro esportivo (ContaCorrente), tipo o modo turbo.
+
+Agora, se você comprou um carro esportivo (new ContaCorrente()), mesmo que você o chame genericamente de Conta, ele tem o modo turbo.
+Basta você tratá-lo como um ContaCorrente para acessar essas funções.
+
+
+➡️ Como a variável pode ser de um tipo e o objeto ser de outro?
+➡️ O que isso significa?
+➡️ Como funciona na prática?
+
+Vamos por partes.
+
+🎒 1. O que é uma variável?
+Pensa que a variável é só uma etiqueta (ou uma referência) que aponta pra um objeto na memória.
+
+Exemplo simples de etiqueta no mundo real:
+
+Você tem uma gaveta chamada "Documentos Importantes".
+Lá dentro pode ter uma carteira de identidade, um passaporte, uma escritura...
+A etiqueta "Documentos Importantes" não te conta tudo o que tem dentro, mas você sabe que, em geral, só guarda documentos lá.
+Em Java, a variável é essa etiqueta.
+
+🎒 2. O que é o tipo da variável?
+O tipo da variável diz:
+➡️ "O que eu espero que essa variável saiba fazer."
+➡️ "Que métodos posso chamar nela sem correr riscos."
+
+Exemplo:
+
+Animal meuAnimal = new Cachorro();
+
+O tipo da variável é Animal.
+Mas o objeto real que você criou foi um Cachorro.
+O Java só deixa você enxergar o que um Animal sabe fazer.
+Mesmo que o objeto real seja um Cachorro com mais funcionalidades.
+
+🎒 3. Por que isso acontece?
+Isso acontece por causa do polimorfismo.
+➡️ Você pode tratar um Cachorro como se fosse um Animal.
+➡️ Assim, o código que lida com vários tipos diferentes de animais pode ser genérico.
+
+Por exemplo:
+Imagina uma lista de Animal.
+Dentro dela, você pode colocar:
+
+Um Cachorro, um Gato, um Passarinho...
+E tratar todos da mesma forma:
+
+List<Animal> animais = new ArrayList<>();
+animais.add(new Cachorro());
+animais.add(new Gato());
+
+for (Animal a : animais) {
+    a.emitirSom();  // Eu não preciso saber se é cachorro ou gato. Só sei que é um Animal!
+}
+🎒 4. Como a variável pode ser de um tipo e o objeto outro?
+➡️ A variável (Animal) só diz o mínimo que o objeto tem que saber fazer.
+➡️ Mas o objeto real (Cachorro) pode ter coisas extras.
+
+Você pode pensar nisso assim:
+Imagina um "controle remoto universal" (a variável do tipo Animal).
+
+Ele funciona com qualquer marca de TV (qualquer tipo de Animal).
+Mas se a TV for da marca "Cachorro", ela pode ter um botão extra que o controle remoto universal não conhece.
+Se você quiser usar o botão extra, você precisa pegar o controle da TV da marca Cachorro (fazer o cast).
+
+🎒 5. Exemplo em código (com explicação de cada parte)
+
+public class Animal {
+    public void emitirSom() {
+        System.out.println("Animal faz um som genérico.");
+    }
+}
+
+public class Cachorro extends Animal {
+    @Override
+    public void emitirSom() {
+        System.out.println("Au Au!");
+    }
+
+    public void abanarRabo() {
+        System.out.println("Cachorro abanando o rabo!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal meuAnimal = new Cachorro(); // A variável é Animal, mas o objeto é um Cachorro!
+
+        meuAnimal.emitirSom();   // Chama o método de Cachorro (polimorfismo)
+
+        // meuAnimal.abanarRabo();  // Não funciona! O Java só "vê" um Animal aqui.
+
+        // Se eu quiser acessar abanarRabo(), preciso fazer o cast:
+        Cachorro meuCachorro = (Cachorro) meuAnimal;
+        meuCachorro.abanarRabo();  // Agora sim!
+    }
+}
+
+Saída:
+Au Au!
+Cachorro abanando o rabo!
+
+🎒 6. Analogia Final (pra fixar de vez!)
+
+🛴 A variável é o volante.
+🚗 O objeto é o carro.
+
+O volante pode controlar um carro simples (Animal) ou um carro esportivo (Cachorro).
+Mas se você tem um volante simples (variável Animal), você não sabe se tem turbo no carro, a não ser que você verifique o que tem embaixo do capô (faça um cast).
+
+Para verificar se o objeto é do tipo de uma classe, podemos utilizar a instrução instaceof. Essa instrução retorna true caso o objeto a esquerda do operador é do tipo (classe) especificado à direita do operador 
+
+<h3>Sobrescrita de métodos</h3>
+Sobrescrever um método é redefinir na subclasse um método existente na superclasse. Assim, quando o método retirar for chamado de um objeto do tipo Conta Corrente, o método chamado será o retirar definido na classe Conta Corrente e não da classe Conta.
+
+A anotação @Override marca o método, identificando que o método está sobrescrevendo um método de sua superclass.
+
+O método retirar soma a taxa de retirada (10) ao valor a ser subtraído do saldo. Como não temos acesso direto ao saldo e não podemos alterar seu valor na subclasse(não existe o método setSaldo() na classe Conta), precisamos utilizar o método retirar que está na classe Conta. A palavra super é utilizada para referenciar a superclasse, assim a instrução super.retirar(valor) está chamando o método retirar que está na classe Conta.
+
+A palavra polimorfismo quer dizer várias formas, na orientação a objetos representa que um objeto pode ser referenciado de várias formas. Quando sobrescrevemos um método na subclasse, o que determina se o método que será chamado é da subclasse ou da superclasse é o tipo de instância do objeto.
+
+Podemos redefinir o comportamento de uma classe em sua subclasse e assim um objeto pode comportar de maneira diferente ao invocar um método, dependendo do seu tipo de criação.
+
+Construtores em classes estendidas
+
+Os construtores das subclasses sempre precisam chamar um construtor da superclasse. E para isso, a instrução super é utilizada.
+Antes de construir a subclasse, o Java precisa garantir que a superclasse foi construída primeiro.
+o Java chama o construtor da superclasse, ele faz isso automaticamente.
+➡️ Se você não escrever nada, ele chama implicitamente:
+
+super();
+
+O super() chama o construtor padrão (sem argumentos) da superclasse.
+
+🔧 Se a superclasse não tiver um construtor sem argumentos, você precisa chamar explicitamente outro construtor da superclasse, passando parâmetros.
+
+Quando usar super explicitamente?
+Se a superclasse tiver um construtor com parâmetros, tipo:
+
+public class Conta {
+    private double saldo;
+
+    public Conta(double saldoInicial) {
+        this.saldo = saldoInicial;
+        System.out.println("Construtor da Conta com saldo inicial");
+    }
+}
+
+A subclasse ContaCorrente precisa informar ao construtor da superclasse o valor esperado:
+
+public class ContaCorrente extends Conta {
+    public ContaCorrente(double saldoInicial) {
+        super(saldoInicial);  // ⬅️ chamada explícita ao construtor da superclasse
+        System.out.println("Construtor da ContaCorrente");
+    }
+}
+
+Casos em que você usa o super de forma explícita:
+1. Quando a superclasse só tem construtores com parâmetros
+Se a superclasse não tem um construtor sem parâmetros, o compilador do Java obriga você a chamar um dos construtores existentes com super(...).
+
+public class ContaCorrente extends Conta {
+
+    public ContaCorrente() {
+        super(100);  // ⚠️ OBRIGATÓRIO! A superclasse só tem esse construtor
+        System.out.println("Construtor da ContaCorrente");
+    }
+}
+
+2. Quando você quer inicializar atributos da superclasse no momento da construção
+Você pode querer passar informações da subclasse para a superclasse durante a construção do objeto.
+
+🔹 Exemplo:
+
+public class Pessoa {
+    private String nome;
+
+    public Pessoa(String nome) {
+        this.nome = nome;
+        System.out.println("Criando Pessoa: " + nome);
+    }
+}
+
+public class Funcionario extends Pessoa {
+    private String cargo;
+
+    public Funcionario(String nome, String cargo) {
+        super(nome);  // Aqui você inicializa o nome herdado
+        this.cargo = cargo;
+        System.out.println("Criando Funcionario: " + cargo);
+    }
+}
+
+
+3. Quando você quer chamar métodos ou construtores específicos da superclasse por necessidade lógica
+Às vezes você tem sobrecargas na superclasse e precisa decidir qual construtor faz mais sentido ser chamado.
+
+🔹 Exemplo com vários construtores na superclasse:
+
+public class Conta {
+    private double saldo;
+
+    public Conta() {
+        this(0);  // Chama outro construtor da mesma classe
+    }
+
+    public Conta(double saldoInicial) {
+        this.saldo = saldoInicial;
+    }
+}
+Na subclasse:
+
+public class ContaCorrente extends Conta {
+    public ContaCorrente(double saldoInicial) {
+        super(saldoInicial);  // Quero que a ContaCorrente comece com um saldo inicial específico
+    }
+}
+➡️ Mesmo que haja outros construtores disponíveis, você decide chamar aquele que te interessa.
+
+As classes Conta e ContaCorrente possuem construtores padrão(sem argumentos) que são fornecidos pelo Java. O construtor padrão chama o construtor da superclasse direita, ou seja, o construtor da classe ContaCorrente chama o construtor da classe Conta e o construtor da classe conta chama o construtor da classe Object
+
+Outras duas regras dos construtores são:
+1) Não são herdados.
+2) A chamada do construtor da superclasse deve ser sempre feita na primeira linha do construtor da subclasse.
