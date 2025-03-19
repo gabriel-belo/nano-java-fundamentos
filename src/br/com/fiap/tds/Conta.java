@@ -25,7 +25,6 @@ public class Conta   {
 
     private boolean especial;
 
-
     public Conta(){
 
     }
