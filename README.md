@@ -800,3 +800,19 @@ As classes Conta e ContaCorrente possuem construtores padrão(sem argumentos) qu
 Outras duas regras dos construtores são:
 1) Não são herdados.
 2) A chamada do construtor da superclasse deve ser sempre feita na primeira linha do construtor da subclasse.
+
+<h1>Cap 4- Estruturas de repetição, arrays, strings e coleções</h1>
+<h3>Estrutras de repetição</h3>
+No Java existem três estruturas de repetição que veremos a seguir: While, Do-While e For.
+
+<h4>While</h4>
+while(<condição>){
+  <instrução>
+}
+
+<h4>Do-while</h4>
+Esse loop primeiramente irá executar todo o bloco de código para depois testar a condição, e assim verificar se repete novamente o bloco de código.
+
+do{
+  <instruções>
+}while(<condição>)
