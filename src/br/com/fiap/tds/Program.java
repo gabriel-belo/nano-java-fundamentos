@@ -9,7 +9,8 @@ public class Program {
             System.out.println("c1 não é do tipo Conta");
         }
 
-        Conta c2= new ContaCorrente();
+        Conta c2= new ContaCorrente("Corrente");
+
         if(c2 instanceof Conta){
             System.out.println("c2 é do tipo Conta");
         }else {
