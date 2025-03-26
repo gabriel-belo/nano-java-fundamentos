@@ -816,3 +816,173 @@ Esse loop primeiramente irá executar todo o bloco de código para depois testar
 do{
   <instruções>
 }while(<condição>)
+
+<h4>For</h4>
+O loop for é uma estrutura de repetição controlada por uma variável de contador que será atualizada depois de cada iteração.
+for(<inicialização>;<condição lógica>;<incremento ou decremento>){
+  <Instruções>
+}
+
+O valor de (<inicialização>) da estrutura for normalmente é utlizado para inicializar a variável de contador. A condição lógica verifica se o loop deve repetir ou não, e o incremento (ou decremento) é a atualização da variável de controle, a cada iteração
+
+<h4>Arrays</h4>
+Um array é uma estrutura de dados que armazena uma coleção de itens do mesmo tipo, que pode ser um tipo primitivo ou um objeto. Cada item no vetor possui o seu próprio local numerado, chamado índice. O índice é utilizado para acessar um elemento no vetor e, assim, recuperar ou atribuir uma informação naquele índice.
+
+Em um array o índice inicia a partir de 0.
+
+Um array possui um comprimento fixo e que não pode ser alterado, ou seja, será definido um valor para o array e esse deve permanecer.
+
+Um array em java é um objeto. Dessa forma podemos utlizar o operador new para criar uma nova instância de um array.
+
+Para declarar uma variável para armazenar um array, primeiro precisamos especificar o tipo do array, acrescentar colchetes [] e definir o nome da variável, exemplo: 
+int[] notas; 
+
+ou
+
+int notas [];
+
+As duas formas produzem o mesmo resultado.
+No momento da dlecaração, precisamos definir entre os colchetes o comprimento do array, no exemplo abaixo criamos um array de 40 números inteiros.
+int notas []= new int[40];
+
+Um array de boolean é inicializado com false e um array de objeto é inicializado com null.
+
+Existem duas formas de declarar um vetor com suas posições preenchidas com valores pré-determinados:
+A primeira, consiste em atribuir os valores entre chave{} e separado por vírgula:
+int notas[]= {10, 9, 8, 2};
+
+A outra forma tem o mesmo princípio da primeira, diferenciando pela adição do operador new na declaração:
+int notas[]= new int[]{10, 9, 8, 2};
+
+Podemos criar um array de qualquer tipo de dado no Java.
+Exemplos:
+byte bytes[]= new byte[4];
+short shots[]= new short[8];
+double doubles[]= new double[7];
+float floats[]= new float[3];
+String strings[]= new String[10];
+Carro carros[]= new Carro[15];
+
+É possível criar um array para armazenar objetos, que são os arrays de referência ou o "array de objetos". Neste array é possível armazenar várias referências a um tipo de objeto. Neste exemplo, estamos definindo um array com 5 posições para armazenar as referências de objetos do tipo Carro.Exemplo:
+Carro[]= new Carro[5];
+
+Até esse momento, nenhum objeto Carro foi criado. O array foi criado para armazenar as referências de 5 Carros, e por enquanto as posições de vetor estão vazias (null).
+
+Para recuperar o valor do modelo do carro que está armazenado na primeira posição do vetor, podemos escrever o seguinte código:
+String modelo= carros[0].getModelo();
+System.out.println(modelo);
+
+Usando o coando for-each, não necessitamos manter uma variável de controle para indicar a posição do elemento no vetor.
+for(<Tipo> <variável> : <Array>){
+
+}
+
+O primeiro parâmetro é o tipo do array. O segundo é o nome para a variável que vai receber cada um dos itens do vetor. O último parâmetro, que está após os dois pontos(:) é o array que queremos percorrer. Exemplo:
+for(Carro carro: carros){
+  System.out.println(carro.getModelo());
+}
+
+O tipo de vetor é Carro, a variável que vai receber cada um dos itens do vetor é o carro e o array que queremos percorrer é o vetor de carros.
+
+Arrays multidimensionais ou matrizes. As matrizes nada mais são que arrays de arrays. Dessa forma, cada posição do array armazena outro array. Esses arrays também podem conter arrays, e assim por diante, ou seja, quantas dimensões que o desenvolvedor desejar.
+
+Imagine agora que as notas dos alunos devem ser armazenadas por disciplinas. O curso tem 9 disciplinas com 40 alunos cada. Dessa forma, podemos criar um array com 9 posições e em cada posição armazenar um outro array com 40 elementos:
+int[][] notas= new int [9][40]
+
+Para armazenar um valor para o primeiro aluno na primeira disciplina:
+notas[0][0]= 10;
+
+É possível também criar um array de array de array ou em quantas dimensões forem necessárias:
+int[][][] notas= new int[10][50][10];
+
+
+<h4>Strings</h4>
+Vamos aprender a manipular strings.
+
+O Java não tem um tipo de dado primitivo como int ou double para armazenar uma string. Ao invés, podemos utilizar a biblioteca padrão Java que contém uma classe predefinida chamada string. Essa classe é projetada para manipular textos e oferece uma variedade de métodos para realizar operações, como concatenação, comparação de Strings. Portanto, para trabalhar com textos em Java, sempre usamos a classe String em vez de um tipo de dado primitivo.
+
+Os objetos strings são imutáveis, isto é, seu conteúdo de caracteres não pode ser alterado após a sua inicialização. Dessa forma, é impossível alterar o valor da string. Porém, é possível armazenar outra string no lugar da string original.
+
+Uma string deve ser declarada, instanciada e inicializada.
+
+1. Declarar: significa informar ao Java que desejamos criar uma variável que irá armazenar uma string.
+2. Instanciar: cria um novo objeto da classe String. Isso estabelece a estrutura que irá conter os dados da string.
+3. Inicializar: Aqui, atribuimos um valor à string, ou seja, define qual texto será armazenado naquela variável.
+
+Portanto uma string precisa ser declarada como uma variável, transformada em um objeto da classe String e receber um valor para ser utilizada corretamente
+
+Exemplo:
+1.Declaração
+String frase;
+
+2.Instanciação e 3. Inicialização
+frase = new String("Olá, mundo!");
+
+Nesse exemplo:
+-A string é declarada na primeira linha, criando uma variável chamada frase.
+-Na segunda linha a string é instanciada através do uso do operador new e inicializada com o valor "Olá, mundo!".
+
+ É possível também atribuir um valor a uma string sem instanciá-la, exemplo:
+ String nome= "FIAP";
+
+ Dessa forma, a string será armazenada em um pool de strings, uma área utilizada pelo Java como cache.
+ Quando criamos uma string em Java utilizando a notação simples(String frase= "Olá, Mundo!";) essa string é armazenada em uma área especial chamada "pool strings". O pool strings funciona como um tipo de armazenamento temporário onde o Java mantém strings que já foram criadas. A vantagem desse método é que, se você criar outra string com o mesmo conteúdo, em vez de criar uma nova cópia, o Java pode utilizar a string já existente no pool. Isso economiza memória e melhora o desempenho da aplicação. Portanto, o pool de strings ajuda a gerenciar de forma eficiente as sequências de caracteres no Java.
+
+<table>
+  <thead>
+    <tr>
+      <th>Sequeência de Escape</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\n</td>
+      <td>Nova linha. Posiciona o cursor no início da próxima linha.</td>
+    </tr>
+    <tr>
+      <td>\t</td>
+      <td>Tabulação horizontal. Move o cursor para apróxima posição da tabulação horizontal.</td>
+    </tr>
+    <tr>
+      <td>\\</td>
+      <td>Barras invertidas. Utilizada para gerar um caractere de barra invertida(\)</td>
+    </tr>
+    <tr>
+      <td>\"</td>
+      <td>Aspas duplas. Utilizada para gerar um caractere de aspas duplas.</td>
+    </tr>
+    <tr>
+      <td>\'</td>
+      <td>Aspas simples. Utilizada para gerar um caractere de aspas simples.</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+Concatenação de strings nada mais é do que juntar duas ou mais strings para criar uma nova string.
+
+A forma mais fácil de concatenar uma string é utilizar o operador de soma (+)
+
+Utilizando o operador (+=) para strings, dessa forma vamos concatenando strings e atribuindo o resultado para a mesma variável
+
+Além do operado + e +=, podemos concatenar strings utilizando o método concat
+
+Também é possível misturar as técnincas apresentadas para realizar a concatenação de strings.
+
+<h4>Collections Framework (coleções)</h4> 
+Os arrays possuem muitas limitações por isso a plataforma Java tem um conjunto de classes e interfaces conhecidos como Collection Framework, que representamestruturas de dados avançadas.
+
+Collections Framework ou Coleções são estruturas de dados utilizadas para armazenar e organizar objetos de maneira eficiente e prática. Podem ser utilizadas para representar estruturas como vetores, listas pilhas, filas, mapas, conjuntos e outras estruturas de dados.
+
+Coleções são muito comuns nas aplicações Java, rpincipalmente para o acesso ao banco de dados, principalmente no resultado de buscas. Assim podemos armazenar os clientes, livros, endereços em nossas aplicações.
+
+As coleções são definidas por meio de interfaces. As interfaces determinam o que a estrutura deve fornecer de funcionalidade, ou seja, fornecem um contrato para que a classe concreta as implemente. 
+
+No Java, as coleções podem ser classificadas em duas categorias: as que implementam a interfacde Collection e as que implementam a interface Map.
+
+As principais subinterfaces de Collection são:
+<ul>
+  <li>List: representa uma lista de objetos, a implementação mais utilizada é o ArrayList</li>
+  <li>Set: Representa um conjunto de objetos únicos, e os objetos não se repetem; a implementação mais utilizada é a HashSet</li>
+</ul>
