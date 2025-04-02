@@ -902,9 +902,51 @@ Vamos aprender a manipular strings.
 O Java não tem um tipo de dado primitivo como int ou double para armazenar uma string. Ao invés, podemos utilizar a biblioteca padrão Java que contém uma classe predefinida chamada string. Essa classe é projetada para manipular textos e oferece uma variedade de métodos para realizar operações, como concatenação, comparação de Strings. Portanto, para trabalhar com textos em Java, sempre usamos a classe String em vez de um tipo de dado primitivo.
 
 Os objetos strings são imutáveis, isto é, seu conteúdo de caracteres não pode ser alterado após a sua inicialização. Dessa forma, é impossível alterar o valor da string. Porém, é possível armazenar outra string no lugar da string original.
+Exemplo:
+String saudacao= "Olá";
+saudacao="Oi"
+Isso não altera "Olá", apenas cria uma nova string
+
+Quando você atribui uma nova string a uma variável que já tinha um valor, o que acontece é:
+  1.Um novo objeto String é criado na memória com o novo valor.
+  2.A variável passa a referenciar esse novo objeto.
+  3.O objeto antigo (se não houver mais referências para ele) se torna inacessível e pode ser coletado pelo Garbage Collector (coletor de lixo).
+
+Exemplo:
+O que acontece internamente:
+    1."Olá" é criado e a variável texto aponta para ele.
+    2."Mundo" é criado e texto agora aponta para ele.
+    3."Olá" não tem mais referências e pode ser coletado pelo Garbage Collector.
+
+
+Se precisar modificar strings frequentemente, é melhor usar StringBuilder ou StringBuffer, pois eles permitem alteração sem criar novos objetos constantemente.
+
+O StringBuilder é bom para quando precisamos modificar textos com frequência. Modifica o mesmo objeto em memória (mais rápido que String), melhor para concatenações dentro de loops, usa menos memória.
+O StringBuffer é igual ao StringBuilder, mas com uma diferença importante:Ele é thread-safe (seguro para múltiplas threads). É sincronizado, assim garantimos a consistência do código quando há diversas threads lendo ou modificando a mesma String. No entanto, é mais lento que StringBuilder devido à sincronização.
+A diferença?
+<ul>
+  <li>StringBuilder: Melhor performance (sem sincronização). </li>
+  <li>StringBuffer: Segurança em múltiplas threads.</li>
+</ul>
+
+O operador '+' deve ser usado para quando vamos juntar uma String enorme para facilitar a legibilidade do código, sem a necessidade de criação de um novo objeto, ou mais conhecido por 'multi-line Strings'
+
+<h4>Java threads</h4>
+As Threads são subdivisões dos processos. Um exemplo são os computadores, quando estamos ouvindo música e olhando um site ao mesmo tempo, estamos realizando um processamento paralelo, mesmo que de forma transparente para o usuário.
+Um exemplo prático é um procedimento que consome muito tempo de processador, como um calculo que faz consultas a um Web Service(que pode demorar muito a responder)
+O procedimento é simples, recebe uma lista depois pega o valor de cada registro e soma. Após isso, captura um valor para reajuste em porcentagem , e recalcula o valor somando. Por fim retorna o resultado via WebService.
+
+Não podemos parar toda a aplicação para executar o procedimento acima. Pois imagina se o usuário está fazendo um cadastro simples e tem que esperar 4 minutos para terminar o processamento acima.
+A solução então é fazer com que esse procedimento seja executado concorrentemente, ou seja, ao mesmo tempo em que o usuário está realizando o cadastro, o procedimento acima também é executado, e provavelmente quando ele terminar o cadastro, o procedimento também já terminou, de forma imperceptível para o usuário.
+
+Vamos usar o mesmo código porém usando o conceito de Threads. Iremos criar uma Thread para um bloco específico de código, através da Classe java.lang.Thread
+
+Existe uma interface chamada Runnable que possui o método run. Dentro do método run devem ficar os procedimentos que que desejamos executar paralelamente, sendo assim vamos colocar todo o código acima dentro de um método run. Como Runnable é apenas um contrato, precisamos de alguma classe que a implemente e faça o trabalho da "paralização", que é a classe Thread
+
+#######################################################################################################################################################################################
+
 
 Uma string deve ser declarada, instanciada e inicializada.
-
 1. Declarar: significa informar ao Java que desejamos criar uma variável que irá armazenar uma string.
 2. Instanciar: cria um novo objeto da classe String. Isso estabelece a estrutura que irá conter os dados da string.
 3. Inicializar: Aqui, atribuimos um valor à string, ou seja, define qual texto será armazenado naquela variável.
@@ -915,8 +957,7 @@ Exemplo:
 1.Declaração
 String frase;
 
-2.Instanciação e 3. Inicialização
-frase = new String("Olá, mundo!");
+2.Instanciação e Inicialização frase = new String("Olá, mundo!");
 
 Nesse exemplo:
 -A string é declarada na primeira linha, criando uma variável chamada frase.
@@ -927,6 +968,16 @@ Nesse exemplo:
 
  Dessa forma, a string será armazenada em um pool de strings, uma área utilizada pelo Java como cache.
  Quando criamos uma string em Java utilizando a notação simples(String frase= "Olá, Mundo!";) essa string é armazenada em uma área especial chamada "pool strings". O pool strings funciona como um tipo de armazenamento temporário onde o Java mantém strings que já foram criadas. A vantagem desse método é que, se você criar outra string com o mesmo conteúdo, em vez de criar uma nova cópia, o Java pode utilizar a string já existente no pool. Isso economiza memória e melhora o desempenho da aplicação. Portanto, o pool de strings ajuda a gerenciar de forma eficiente as sequências de caracteres no Java.
+Resumindo o pool strings é como um "depósito".
+
+Quando falamos sobre uma string que é um atributo de uma classe(ou seja, parte de uma instância de um objeto), é importante que essa string seja criada ou atribuida um valor antes de ser usada. Isso ocorre, pois por padrão todos os atributos que não foram inicializados em Java são atribuídos o valor especial null e se tentarmos usar um método em uma string que ainda está com null, o Java não saberá como proceder e gerará um erro.
+
+Para não ter esse erro é preciso instanciar ou inicializar uma string:
+
+Declaração e Instanciação: String nome= new String();
+
+Declaração e Inicialização: String nome= "FIAP";
+
 
 <table>
   <thead>
@@ -969,6 +1020,21 @@ Utilizando o operador (+=) para strings, dessa forma vamos concatenando strings 
 Além do operado + e +=, podemos concatenar strings utilizando o método concat
 
 Também é possível misturar as técnincas apresentadas para realizar a concatenação de strings.
+
+<h5>Comparação de Strings</h5>
+A comparação de strings deve ser realizada através de métodos, cujos principais métodos oara comparação são:
+<ul>
+  <li>Equals(string): verifica a igualdade do valor das strings.</li>
+  <li>EqualsIgnoreCase(string): verifica a igualdade do valor das strings sem diferenciar as letras maiúsculas e minúsculas.</li>
+</ul>
+
+Duas variáveis tem o mesmo valor, porém estão alocadas em endereços de memória diferentes. Dessa forma, o resultado será que não são iguais, pois o perador == compara o endereço de memória e não o valor.
+
+Agora se inicializar as strings sem instância-las, os valores serão alocados em um pool de strings. Dessa forma, se os valores forem iguais, elas vão compartilhar o mesmo espaço de memória no pool, fazendo com que o operador == funcione.
+
+Para verificar se uma string inicia com uma sequência de caracteres podemos usar o método startsWith() com a palavra a ser procurada e para verificar se termina com uma palavra podemos usar o método endsWith()
+
+Podemos usar length para retornar a quantidade de caracteres em uma string
 
 <h4>Collections Framework (coleções)</h4> 
 Os arrays possuem muitas limitações por isso a plataforma Java tem um conjunto de classes e interfaces conhecidos como Collection Framework, que representamestruturas de dados avançadas.
