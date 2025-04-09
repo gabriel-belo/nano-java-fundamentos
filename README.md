@@ -1037,6 +1037,8 @@ Para verificar se uma string inicia com uma sequência de caracteres podemos usa
 Podemos usar length para retornar a quantidade de caracteres em uma string
 
 <h4>Collections Framework (coleções)</h4> 
+Os arrays tem tamanho fixo e só podemos buscar elementos nele através do índice se quisermos buscar por um valor temos que percorrer a lista inteira.
+Quando criamos um array, nós determinamos seu tamanho. Porém, não é possível determinar de uma forma sim´ples a quantidade de posições que foram preenchidas.
 Os arrays possuem muitas limitações por isso a plataforma Java tem um conjunto de classes e interfaces conhecidos como Collection Framework, que representamestruturas de dados avançadas.
 
 Collections Framework ou Coleções são estruturas de dados utilizadas para armazenar e organizar objetos de maneira eficiente e prática. Podem ser utilizadas para representar estruturas como vetores, listas pilhas, filas, mapas, conjuntos e outras estruturas de dados.
@@ -1044,6 +1046,19 @@ Collections Framework ou Coleções são estruturas de dados utilizadas para arm
 Coleções são muito comuns nas aplicações Java, rpincipalmente para o acesso ao banco de dados, principalmente no resultado de buscas. Assim podemos armazenar os clientes, livros, endereços em nossas aplicações.
 
 As coleções são definidas por meio de interfaces. As interfaces determinam o que a estrutura deve fornecer de funcionalidade, ou seja, fornecem um contrato para que a classe concreta as implemente. 
+
+<h4>O que é uma interface em Java?</h4>
+Em Java, interface é um tipo especial de estrutura que define um conjunto de métodos que uma classe deve obrigatoriamente implementar, mas não define o que esses métodos fazem.
+É como um contrato: “Se você assinar esse contrato (implementar essa interface), você tem que fornecer essas funcionalidades.”
+
+🔹Analogia com o mundo real (pra facilitar):
+
+Pensa numa tomada na parede (a interface).
+Ela define o formato que um plugue deve ter para funcionar ali:
+Dois pinos? Três pinos? Posição? Tensão?
+
+O contrato é: “Se você quiser que seu aparelho funcione aqui, ele tem que seguir esse padrão de tomada.”
+Não importa se é um carregador de celular, um liquidificador ou um videogame — todos precisam encaixar na tomada (interface).
 
 No Java, as coleções podem ser classificadas em duas categorias: as que implementam a interfacde Collection e as que implementam a interface Map.
 
