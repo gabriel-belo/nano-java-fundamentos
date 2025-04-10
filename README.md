@@ -1036,3 +1036,9 @@ Para verificar se uma string inicia com uma sequência de caracteres podemos usa
 
 Podemos usar length para retornar a quantidade de caracteres em uma string
 
+
+<h2>Cap 5- Exceptions+ vários outros design patters</h2>
+
+<h3>Tratamento de exceções</h3>
+
+
