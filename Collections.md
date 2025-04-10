@@ -172,12 +172,12 @@ Métodos herdados da interface Map
     </tr>
     
     <tr>
-      <td>isEmpity</td>
-      <td>Verifica se o mapeamento esta vazio</td>
+      <td>isEmpty</td>
+      <td>Verifica se o mapeamento está vazio</td>
     </tr>
     
     <tr>
-      <td>kaySet</td>
+      <td>keySet</td>
       <td>Retorna um set contendo as chaves</td>
     </tr>
     
@@ -198,8 +198,9 @@ Métodos herdados da interface Map
 
     <tr>
       <td>values</td>
-      <td>Retorna o número de mapeamentos</td>
+      <td>Retorna uma coleção contendo os valores</td>
     </tr>
     
   </tbody>
 </table>
+
